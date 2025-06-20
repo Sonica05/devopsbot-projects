@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Start MySQL container
+# Start MySQL
 docker run -d \
   --name mydb \
   -e MYSQL_ROOT_PASSWORD=pass123 \
@@ -8,7 +8,7 @@ docker run -d \
   -v mysql_data:/var/lib/mysql \
   mysql:5.7
 
-# Start WordPress container
+# Start WordPress (from custom Dockerfile build)
 docker run -d \
   --name wordpress \
   -e WORDPRESS_DB_HOST=mydb \
@@ -17,5 +17,5 @@ docker run -d \
   -e WORDPRESS_DB_NAME=wordpress_db \
   -p 80:80 \
   --link mydb:mysql \
-  wordpress
+  mywordpress
 
