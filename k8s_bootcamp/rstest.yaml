@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rsapp4
+  namespace: tg
+spec:
+  replicas: 7
+  selector:
+   matchLabels:
+    rsapp: mypod
+    env: stage
+  template:
+   metadata:
+    labels:
+     rsapp: mypod
+     env: stage
+   spec:
+    containers:
+     - name: c1
+       image: cdtsbikaner/project1:nginxv1
+     - name: c2
+       image: cdtsbikaner/project1:v.1.0.1

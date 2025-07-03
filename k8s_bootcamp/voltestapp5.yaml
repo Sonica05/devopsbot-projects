@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: voltestapp5
+  namespace:  tg
+  labels:
+    env: stage
+spec:
+  #nodeName: wn1.tg.com
+  volumes:
+    - name: myvol1
+      hostPath:
+       path:  /opt/mybackup
+       type: Directory
+  containers:
+    - name: c1
+      image:  cdtsbikaner/project1:nginxv1
+      volumeMounts:
+        - name: myvol1
+          mountPath: /usr/share/nginx/html
+          readOnly: true

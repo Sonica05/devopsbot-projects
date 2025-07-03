@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app1
+  namespace: tg
+spec:
+  containers:
+   - name: c1
+     image: cdtsbikaner/project1:nginxv1
+     ports:
+       - containerPort: 80
+   - name: c2
+     image: cdtsbikaner/project1:v.1.0.1
+     ports:
+       - containerPort: 8080

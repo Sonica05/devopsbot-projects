@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-nginx
+  namespace: tg
+  labels:
+    env: stage
+    app: nginx
+spec:
+  replicas: 15
+  selector:
+   matchLabels:
+    env: stage
+    app: nginx
+  template:
+   metadata:
+    labels:
+     env: stage
+     app: nginx
+   spec:
+    containers:
+     - name: c1
+       image: nginx:1.14
+       ports:
+        - containerPort: 80
