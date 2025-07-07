@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resource-test
+  namespace: tg
+  labels:
+    env: stage
+spec:
+  containers:
+    - name: c1
+      image: nginx:1.15
+      resources:
+       requests:
+         memory: "128Mi"
+         cpu: "250m"
+       limits:
+         memory: "256Mi"
+         cpu: "500m"
+      ports:
+        - containerPort: 80
+    - name: c2
+      image: cdtsbikaner/project1:v.1.0.1
+      resources:
+       requests:
+         memory: "256Mi"
+         cpu: "500m"
+       limits:
+         memory: "512Mi"
+         cpu: "750m"
+      ports:
+        - containerPort: 8080
