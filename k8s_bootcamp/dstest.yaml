@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nginx-daemonset
+  namespace: tg
+  labels:
+    env: nginx
+    app: dsnginx
+spec:
+  selector:
+    matchLabels:
+      app: dsnginx
+      env: nginx
+  template:
+    metadata:
+      labels:
+        app: dsnginx
+        env: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14
+        ports:
+        - containerPort: 80
+  
